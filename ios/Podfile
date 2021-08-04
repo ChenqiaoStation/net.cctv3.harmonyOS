@@ -5,6 +5,14 @@ platform :ios, '10.0'
 
 target 'TestMyPackages' do
   config = use_native_modules!
+  # react-native-permissions
+  # By default no permission handler is installed.
+  # Update your Podfile by choosing the ones you want to check or request, then run pod install.
+	permissions_path = '../node_modules/react-native-permissions/ios'
+
+  pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccuracy"
+  pod 'Permission-LocationAlways', :path => "#{permissions_path}/LocationAlways"
+  pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse"
 
   use_react_native!(
     :path => config[:reactNativePath],
