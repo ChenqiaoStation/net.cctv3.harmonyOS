@@ -1,5 +1,5 @@
 apply plugin: "com.android.application"
-// raect-native-code-push
+// react-native-code-push
 apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 import com.android.build.OutputFile

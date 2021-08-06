@@ -7,12 +7,20 @@ import {useEffect} from 'react';
 import Geolocation from '@react-native-community/geolocation';
 import {check, PERMISSIONS, request, RESULTS} from 'react-native-permissions';
 import moment from 'moment';
+import codePush from 'react-native-code-push';
 
 const TestMyPackages = props => {
   useEffect(() => {
     console.log('init closure state:', Closure.getState());
     console.log('Week in this year:', moment('2021-07-02').week());
   }, [Closure.getState()]);
+
+  useEffect(() => {
+    codePush.sync({
+      updateDialog: true,
+      installMode: codePush.InstallMode.IMMEDIATE,
+    });
+  }, []);
 
   return (
     <View style={{flex: 1}}>
@@ -35,4 +43,7 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent(appName, () => TestMyPackages);
+// 检测的频率
+AppRegistry.registerComponent(appName, () =>
+  codePush({checkFrequency: codePush.CheckFrequency.MANUAL})(TestMyPackages),
+);
