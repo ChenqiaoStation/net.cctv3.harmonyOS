@@ -7,7 +7,7 @@ const Debugger = () => {
     <View style={{flex: 1}}>
       <View style={styles.viewContainer}>
         <Text>{new Date().toString()}</Text>
-        <Text>Hello world 1.0.5</Text>
+        <Text>Hello world 1. 测试 1.0 版本</Text>
       </View>
     </View>
   );
