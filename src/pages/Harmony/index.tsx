@@ -17,6 +17,7 @@ import TestButton from '../Demo/TestButton';
 import TestCheckBox from '../Demo/TestCheckBox';
 import TestRadioButton from '../Demo/TestRadioButton';
 import TestSeekBar from '../Demo/TestSeekBar';
+import TestProgressBar from '../Demo/TestProgressBar';
 
 const harmonyViews: Array<HarmonyView> = [
   {
@@ -55,6 +56,11 @@ const harmonyViews: Array<HarmonyView> = [
     view: <TestCheckBox />,
   },
   {title: 'Seek Bar', message: '可拖拽进度条', view: <TestSeekBar />},
+  {
+    title: 'Progress Bar',
+    message: '优美的支持渐变色的进度条',
+    view: <TestProgressBar />,
+  },
 ];
 
 const Harmony = () => {

@@ -23,16 +23,16 @@ let colors =
 const App = () => {
   const tabs = [
     {
-      image: require('./src/images/menu_bug_no.png'),
-      activeImage: require('./src/images/menu_bug_yes.png'),
-      text: 'Debugger',
-      page: <Debugger />,
-    },
-    {
       image: require('./src/images/menu_harmony_no.png'),
       activeImage: require('./src/images/menu_harmony_yes.png'),
       text: 'Harmony Components',
       page: <Harmony />,
+    },
+    {
+      image: require('./src/images/menu_bug_no.png'),
+      activeImage: require('./src/images/menu_bug_yes.png'),
+      text: 'Debugger',
+      page: <Debugger />,
     },
     {
       image: require('./src/images/menu_setting_no.png'),

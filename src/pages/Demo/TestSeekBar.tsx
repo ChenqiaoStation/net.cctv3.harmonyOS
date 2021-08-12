@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -34,7 +26,7 @@ const loadSeekBar = (
       barWidth={Dimensions.get('screen').width - 48}
       onProgressChange={progress => {
         Closure.set('progress', progress);
-        console.log('current', Closure.getState());
+        // console.log('current', Closure.getState());
       }}
     />
   );

@@ -32,9 +32,10 @@ const TestMyPackages = props => {
   ];
   useEffect(() => {
     // codePush.sync(options: Object, syncStatusChangeCallback: function(syncStatus: Number), downloadProgressCallback: function(progress: DownloadProgress), handleBinaryVersionMismatchCallback: function(update: RemotePackage)): Promise<Number>;
-    codePush.getUpdateMetadata().then(localPackage => {
-      console.log('Local JS Bundle: ', localPackage);
-    });
+    !__DEV__ &&
+      codePush.getUpdateMetadata().then(localPackage => {
+        console.log('Local JS Bundle: ', localPackage);
+      });
     codePush
       .checkForUpdate('0DUSidwp05PZNO1EBNi3Vl5BgPv0ojK2hNHa1')
       .then(remotePackage => {
@@ -91,4 +92,6 @@ const styles = StyleSheet.create({
 });
 
 // 检测的频率
-AppRegistry.registerComponent(appName, () => codePush(TestMyPackages));
+AppRegistry.registerComponent(appName, () =>
+  codePush({checkFrequency: codePush.CheckFrequency.MANUAL})(TestMyPackages),
+);
