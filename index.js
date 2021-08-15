@@ -93,5 +93,5 @@ const styles = StyleSheet.create({
 
 // 检测的频率
 AppRegistry.registerComponent(appName, () =>
-  codePush({checkFrequency: codePush.CheckFrequency.MANUAL})(TestMyPackages),
+  codePush({checkFrequency: codePush.CheckFrequency.MANUA})(TestMyPackages),
 );

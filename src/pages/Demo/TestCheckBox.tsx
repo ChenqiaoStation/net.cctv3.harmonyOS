@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, Text, View, FlatList, Dimensions} from 'react-native';
 
 import {Button, TabNavigator, x, Closure, TabBar, CheckBox} from '../../test';
 import {useState} from 'react';

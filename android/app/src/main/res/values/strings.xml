@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestMyPackages</string>
+    <string name="app_name">HarmonyOS</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
     <string moduleConfig="true" name="CodePushDeploymentKey">0DUSidwp05PZNO1EBNi3Vl5BgPv0ojK2hNHa1</string>
