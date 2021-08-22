@@ -13,6 +13,7 @@ import {x, Closure} from './src/test';
 import {useEffect} from 'react';
 import moment from 'moment';
 import codePush from 'react-native-code-push';
+import DeviceInfo from 'react-native-device-info';
 
 const TestMyPackages = props => {
   useEffect(() => {
@@ -32,6 +33,9 @@ const TestMyPackages = props => {
   ];
   useEffect(() => {
     // codePush.sync(options: Object, syncStatusChangeCallback: function(syncStatus: Number), downloadProgressCallback: function(progress: DownloadProgress), handleBinaryVersionMismatchCallback: function(update: RemotePackage)): Promise<Number>;
+    //  Xiaomi
+    console.log('Device name: ', DeviceInfo.getBrand());
+    /*
     !__DEV__ &&
       codePush.getUpdateMetadata().then(localPackage => {
         console.log('Local JS Bundle: ', localPackage);
@@ -68,6 +72,7 @@ const TestMyPackages = props => {
           ]);
         }
       });
+      */
   }, []);
 
   return (
@@ -93,5 +98,5 @@ const styles = StyleSheet.create({
 
 // 检测的频率
 AppRegistry.registerComponent(appName, () =>
-  codePush({checkFrequency: codePush.CheckFrequency.MANUA})(TestMyPackages),
+  codePush({checkFrequency: codePush.CheckFrequency.MANUAL})(TestMyPackages),
 );

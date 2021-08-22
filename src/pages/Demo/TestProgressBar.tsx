@@ -1,17 +1,12 @@
-import moment from 'moment';
 import React, {useState} from 'react';
 import {useEffect} from 'react';
 import {useRef} from 'react';
 import {
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
-  FlatList,
   Animated,
   Dimensions,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {Button, ProgressBar} from '../../test';
 import tinycolor from 'tinycolor2';
 import {x} from '../../test';
@@ -82,7 +77,7 @@ const TestProgressBar = () => {
 const styles = StyleSheet.create({
   viewContainer: {
     backgroundColor: 'white',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 });
 

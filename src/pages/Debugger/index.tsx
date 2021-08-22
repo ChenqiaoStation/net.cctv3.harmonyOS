@@ -10,10 +10,18 @@ import {
   FlatList,
   Animated,
   Dimensions,
+  Linking,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Button, ProgressBar} from '../../test';
 import tinycolor from 'tinycolor2';
+import DeviceInfo from 'react-native-device-info';
+
+const nativeAppCenters = [
+  {regexp: /.*(mi).*/i, url: 'mimarket://details?id=com.mis'},
+  {regexp: /.*(oppo).*/i, url: 'oppomarket://details?packagename=com.mis'},
+  {regexp: /.*(huawei|honor).*/i, url: 'appmarket://details?id=com.mis'},
+];
 
 const Debugger = () => {
   // 缩放动画
@@ -78,13 +86,11 @@ const Debugger = () => {
         text={`Change Progress: ${Math.ceil(progress * 100)}%`}
         disabled={false}
         onPress={() => {
-          setProgress(t => {
-            let r = 0;
-            do {
-              r = Math.random();
-            } while (r > 0.25);
-            return t + r > 1 ? 0 : t + r;
-          });
+          // Linking.openURL('appmarket://details?id=com.mis');
+          let appCenter = nativeAppCenters.find(it =>
+            it.regexp.test(DeviceInfo.getBrand()),
+          );
+          Linking.openURL(appCenter?.url ?? '');
         }}
       />
     </View>
