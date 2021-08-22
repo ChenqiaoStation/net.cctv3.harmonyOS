@@ -1,4 +1,4 @@
-package com.testmypackages;
+package net.cctv3.HarmonyOS;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "TestMyPackages";
+        return "HarmonyOS";
     }
 }

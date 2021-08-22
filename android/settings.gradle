@@ -1,4 +1,4 @@
-rootProject.name = 'TestMyPackages'
+rootProject.name = 'HarmonyOS'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 // react-native-code-push
 include ':app', ':react-native-code-push'

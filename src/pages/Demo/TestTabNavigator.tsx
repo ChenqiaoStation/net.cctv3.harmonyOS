@@ -13,6 +13,7 @@ import {
 
 import {Button, TabNavigator, x, Closure} from '../../test';
 import {useState} from 'react';
+import {Grayscale} from 'react-native-color-matrix-image-filters';
 
 const TestTabNavigator = () => {
   let tabs = [
@@ -25,12 +26,12 @@ const TestTabNavigator = () => {
       text: '游戏',
     },
     {
-      icon: require('../../images/demo_menu_drink.png'),
-      text: '喝茶',
-    },
-    {
       icon: require('../../images/demo_menu_money.png'),
       text: '福利',
+    },
+    {
+      icon: require('../../images/demo_menu_drink.png'),
+      text: '喝茶',
     },
   ];
 
@@ -39,7 +40,11 @@ const TestTabNavigator = () => {
     for (let i = 0; i < tabs.length; i++) {
       array.push({
         activeIcon: <Image source={tabs[i].icon} style={styles.icon} />,
-        inactiveIcon: <Image source={tabs[i].icon} style={styles.icon} />,
+        inactiveIcon: (
+          <Grayscale>
+            <Image source={tabs[i].icon} style={styles.icon} />
+          </Grayscale>
+        ),
         text: tabs[i].text,
         page: null,
       });

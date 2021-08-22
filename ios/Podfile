@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'TestMyPackages' do
+target 'HarmonyOS' do
   config = use_native_modules!
   # react-native-permissions
   # By default no permission handler is installed.
@@ -20,7 +20,7 @@ target 'TestMyPackages' do
     :hermes_enabled => false
   )
 
-  target 'TestMyPackagesTests' do
+  target 'HarmonyOSTests' do
     inherit! :complete
     # Pods for testing
   end

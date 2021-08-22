@@ -7,13 +7,14 @@
  */
 
 import React from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View, Image} from 'react-native';
 
 import {Button, TabNavigator, x, Closure} from './src/test';
 import {useState} from 'react';
 import Debugger from './src/pages/Debugger';
 import TabBar from './src/test/src/component/TabBar';
 import Harmony from './src/pages/Harmony';
+import {Grayscale} from 'react-native-color-matrix-image-filters';
 
 let colors =
   x.Colors.Gradient[
@@ -23,25 +24,40 @@ let colors =
 const App = () => {
   const tabs = [
     {
-      image: require('./src/images/menu_harmony_no.png'),
-      activeImage: require('./src/images/menu_harmony_yes.png'),
+      icon: require('./src/images/menu_radish.png'),
       text: 'Harmony Components',
       page: <Harmony />,
     },
     {
-      image: require('./src/images/menu_bug_no.png'),
-      activeImage: require('./src/images/menu_bug_yes.png'),
+      icon: require('./src/images/menu_meituan.png'),
       text: 'Debugger',
       page: <Debugger />,
     },
     {
-      image: require('./src/images/menu_setting_no.png'),
-      activeImage: require('./src/images/menu_setting_yes.png'),
+      icon: require('./src/images/menu_vip.png'),
       text: 'Setting',
       page: <View />,
     },
   ];
   const [tab, setTab] = useState(tabs[0]);
+
+  const loadTabs = () => {
+    let array = [];
+    for (let i = 0; i < tabs.length; i++) {
+      let t = tabs[i];
+      array.push({
+        activeIcon: <Image source={t.icon} style={styles.icon} />,
+        inactiveIcon: (
+          <Grayscale>
+            <Image source={t.icon} style={styles.icon} />
+          </Grayscale>
+        ),
+        text: t.text,
+        page: t.page,
+      });
+    }
+    return array;
+  };
 
   return (
     <View style={{flex: 1}}>
@@ -55,9 +71,7 @@ const App = () => {
       />
       <View style={styles.viewContainer}>{tab.page}</View>
       <TabNavigator
-        tabs={tabs}
-        inactiveColor="black"
-        imageStyle={styles.tabImageStyle}
+        tabs={loadTabs()}
         onTabPress={tab => {
           setTab(tab);
         }}
@@ -71,9 +85,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  tabImageStyle: {
-    height: 30,
-    width: 30,
+  icon: {
+    height: 32,
+    width: 32,
   },
 });
 

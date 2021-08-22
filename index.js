@@ -15,7 +15,7 @@ import moment from 'moment';
 import codePush from 'react-native-code-push';
 import DeviceInfo from 'react-native-device-info';
 
-const TestMyPackages = props => {
+const HarmonyOS = props => {
   useEffect(() => {
     console.log('init closure state: ', Closure.getState());
     console.log('Week in this year: ', moment().week());
@@ -98,5 +98,5 @@ const styles = StyleSheet.create({
 
 // 检测的频率
 AppRegistry.registerComponent(appName, () =>
-  codePush({checkFrequency: codePush.CheckFrequency.MANUAL})(TestMyPackages),
+  codePush({checkFrequency: codePush.CheckFrequency.MANUAL})(HarmonyOS),
 );
