@@ -10,9 +10,9 @@ import {
   Dimensions,
 } from 'react-native';
 
-import {Button, TabNavigator, x, Closure} from '../../test';
+import {Button, TabNavigator, x, Closure} from '../../react-native-harmonyOS';
 import {useState} from 'react';
-import {Switcher} from '../../test';
+import {Switcher} from '../../react-native-harmonyOS';
 
 const TestSwitcher = () => {
   return (

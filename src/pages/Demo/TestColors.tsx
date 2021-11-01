@@ -8,7 +8,7 @@ import {
   ViewProps,
 } from 'react-native';
 
-import {x, Closure} from '../../test';
+import {x, Closure} from '../../react-native-harmonyOS';
 
 const TestColors = () => {
   return (

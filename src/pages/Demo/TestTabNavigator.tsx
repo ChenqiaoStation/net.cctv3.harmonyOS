@@ -11,7 +11,7 @@ import {
   Image,
 } from 'react-native';
 
-import {Button, TabNavigator, x, Closure} from '../../test';
+import {Button, TabNavigator, x, Closure} from '../../react-native-harmonyOS';
 import {useState} from 'react';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
 

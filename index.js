@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Stacks from './Stacks';
 import {name as appName} from './app.json';
-import {x, Closure} from './src/test';
+import {x, Closure} from './src/react-native-harmonyOS';
 import {useEffect} from 'react';
 import moment from 'moment';
 import codePush from 'react-native-code-push';

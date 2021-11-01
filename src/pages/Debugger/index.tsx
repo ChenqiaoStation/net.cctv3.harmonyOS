@@ -13,7 +13,7 @@ import {
   Linking,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Button, ProgressBar} from '../../test';
+import {Button, ProgressBar} from '../../react-native-harmonyOS';
 import tinycolor from 'tinycolor2';
 import DeviceInfo from 'react-native-device-info';
 
@@ -87,10 +87,10 @@ const Debugger = () => {
         disabled={false}
         onPress={() => {
           // Linking.openURL('appmarket://details?id=com.mis');
-          let appCenter = nativeAppCenters.find(it =>
-            it.regexp.test(DeviceInfo.getBrand()),
-          );
-          Linking.openURL(appCenter?.url ?? '');
+          // let appCenter = nativeAppCenters.find(it =>
+          //   it.regexp.test(DeviceInfo.getBrand()),
+          // );
+          // Linking.openURL(appCenter?.url ?? '');
         }}
       />
     </View>

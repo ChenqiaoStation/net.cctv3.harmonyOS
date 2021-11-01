@@ -1,9 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-
-import {Button, TabNavigator, x} from '../../test';
-import {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import {x} from '../../react-native-harmonyOS';
 
 const TestGradient = () => {
   return (

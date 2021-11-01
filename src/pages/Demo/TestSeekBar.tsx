@@ -10,7 +10,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-import {Button, TabNavigator, x, Closure, TabBar, SeekBar} from '../../test';
+import {Button, TabNavigator, x, Closure, TabBar, SeekBar} from '../../react-native-harmonyOS';
 import {useState} from 'react';
 
 const loadSeekBar = (

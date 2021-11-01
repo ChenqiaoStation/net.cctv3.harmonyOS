@@ -9,10 +9,10 @@
 import React from 'react';
 import {StatusBar, StyleSheet, Text, View, Image} from 'react-native';
 
-import {Button, TabNavigator, x, Closure} from './src/test';
+import {Button, TabNavigator, x, Closure} from './src/react-native-harmonyOS';
 import {useState} from 'react';
 import Debugger from './src/pages/Debugger';
-import TabBar from './src/test/src/component/TabBar';
+import TabBar from './src/react-native-harmonyOS/src/component/TabBar';
 import Harmony from './src/pages/Harmony';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
 

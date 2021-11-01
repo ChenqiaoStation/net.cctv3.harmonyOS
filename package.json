@@ -25,12 +25,12 @@
     "react-native-color-matrix-image-filters": "^5.2.10",
     "react-native-device-info": "^8.3.0",
     "react-native-gesture-handler": "^1.10.3",
-    "react-native-harmony": "^1.1.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-permissions": "^3.0.5",
     "react-native-reanimated": "^2.2.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.4.0",
+    "react-native-video": "^5.1.1",
     "tinycolor2": "^1.4.2"
   },
   "devDependencies": {

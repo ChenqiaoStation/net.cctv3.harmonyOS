@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 
-import {Button, TabNavigator, x, Closure, TabBar} from '../../test';
+import {Button, TabNavigator, x, Closure, TabBar} from '../../react-native-harmonyOS';
 import {useState} from 'react';
 
 const TestButton = () => {

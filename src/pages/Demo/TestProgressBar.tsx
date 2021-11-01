@@ -1,15 +1,10 @@
 import React, {useState} from 'react';
 import {useEffect} from 'react';
 import {useRef} from 'react';
-import {
-  StyleSheet,
-  View,
-  Animated,
-  Dimensions,
-} from 'react-native';
-import {Button, ProgressBar} from '../../test';
+import {StyleSheet, View, Animated, Dimensions} from 'react-native';
+import {Button, ProgressBar} from '../../react-native-harmonyOS';
 import tinycolor from 'tinycolor2';
-import {x} from '../../test';
+import {x} from '../../react-native-harmonyOS';
 
 const TestProgressBar = () => {
   // 缩放动画
