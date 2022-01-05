@@ -22,7 +22,6 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
   ref,
 ) => {
   const [datas, setDatas] = useState([]);
-  const view = useRef<ScrollView>();
   const mansory =
     'https://net-cctv3.oss-cn-qingdao.aliyuncs.com/net.cctv3.temporary/masonry';
   const [itemsMap, setItemsMap] = useState<ItemWidthHieght>(
@@ -56,10 +55,7 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
   }, [itemsMap]);
 
   return (
-    <ScrollView
-      style={{flexDirection: 'column'}}
-      contentContainerStyle={{flexGrow: 1}}
-      ref={view}>
+    <View style={{flex: 1}}>
       {Array.from(datas, (_, i) => (
         <Item
           key={i}
@@ -74,7 +70,7 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
           />
         </Item>
       ))}
-    </ScrollView>
+    </View>
   );
 };
 

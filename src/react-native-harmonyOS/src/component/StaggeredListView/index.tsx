@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  FlatList,
   ScrollView,
   StyleSheet,
   Text,
@@ -40,12 +41,12 @@ const StaggeredListView = () => {
     <View style={{flex: 1}}>
       <TouchableOpacity
         onPress={() => {
-          views[findMinColumn()].current.push(index);
+          views[findMinColumn()].current.push(Math.ceil(Math.random() * 204));
           setIndex(t => t + 1);
         }}>
         <Text>Press me</Text>
       </TouchableOpacity>
-      <ScrollView style={{flex: 1}} nestedScrollEnabled={true}>
+      <ScrollView>
         <View style={styles.viewColumns}>
           {Array.from({length: 3}, (_, i) => (
             // <FlatList
@@ -59,12 +60,13 @@ const StaggeredListView = () => {
             <List
               key={i}
               ref={ref => (views[i].current = ref)}
-              useLayoutChanged={(height) => {
+              useLayoutChanged={height => {
                 let _columnsPageLengths = Array.from(columnsPageLengths);
-                _columnsPageLengths[i] = height; 
+                _columnsPageLengths[i] = Math.ceil(height);
                 setColumnsPageLengths(_columnsPageLengths);
               }}
             />
+            //<View>{Array.from({length: 100}, (_, j) => <Text>{j}</Text>)}</View>
           ))}
         </View>
       </ScrollView>

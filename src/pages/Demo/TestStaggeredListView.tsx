@@ -11,7 +11,7 @@ import List from '../../react-native-harmonyOS/src/component/StaggeredListView/L
 
 const TestStaggeredListView = () => {
   return (
-    <View style={{position: 'absolute'}}>
+    <View style={{flex: 1}}>
       <StaggeredListView />
     </View>
   );
