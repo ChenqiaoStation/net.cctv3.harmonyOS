@@ -16,6 +16,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Button, ProgressBar} from '../../react-native-harmonyOS';
 import tinycolor from 'tinycolor2';
 import DeviceInfo from 'react-native-device-info';
+import JJ from './JJ';
+import TestStaggeredListView from '../Demo/TestStaggeredListView';
 
 const nativeAppCenters = [
   {regexp: /.*(mi).*/i, url: 'mimarket://details?id=com.mis'},
@@ -52,13 +54,14 @@ const Debugger = () => {
     return () => {};
   });
 
+  useEffect(() => {
+    const daysRate = [];
+  }, []);
+
   let color = '#d2aaa0';
   return (
-    <View style={{flex: 1, alignItems: 'center'}}>
-      <View style={styles.viewContainer}>
-        <Text>{new Date().toString()}</Text>
-        <Text>Hello world 1. 测试 1.0 版本</Text>
-        <Animated.View style={[styles.box, {opacity: fadeEffect}]} />
+    <View style={{flex: 1}}>
+      {/* <Animated.View style={[styles.box, {opacity: fadeEffect}]} />
         <View style={{height: 12}} />
         <Animated.View
           style={[
@@ -66,43 +69,13 @@ const Debugger = () => {
             // {width: width},
             {transform: xyEffect.getTranslateTransform()},
           ]}
-        />
-        <View style={{height: 12}} />
-        <ProgressBar
-          height={12}
-          width={Dimensions.get('screen').width - 36}
-          progress={progress}
-          colors={[
-            tinycolor(color).lighten().toHexString(),
-            color,
-            tinycolor(color).darken().toHexString(),
-          ]}
-        />
-      </View>
-      <View style={{height: 12}} />
-      <Button
-        style={{height: 44, width: Dimensions.get('screen').width - 36}}
-        skin="2d"
-        text={`Change Progress: ${Math.ceil(progress * 100)}%`}
-        disabled={false}
-        onPress={() => {
-          // Linking.openURL('appmarket://details?id=com.mis');
-          // let appCenter = nativeAppCenters.find(it =>
-          //   it.regexp.test(DeviceInfo.getBrand()),
-          // );
-          // Linking.openURL(appCenter?.url ?? '');
-        }}
-      />
+        /> */}
+      <TestStaggeredListView />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  viewContainer: {
-    flex: 1,
-    backgroundColor: '#f0f0f0',
-    padding: 12,
-  },
   box: {
     height: 64,
     width: 64,

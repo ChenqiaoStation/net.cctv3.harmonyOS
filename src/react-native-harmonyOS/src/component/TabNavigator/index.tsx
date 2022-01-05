@@ -12,13 +12,14 @@ import {
   TextStyle,
   ImageRequireSource,
   ImageURISource,
+  ImageProps,
 } from 'react-native';
 
 export interface Tab {
   /** Menu 默认的图标: 未选中状态 */
-  image: ImageRequireSource | ImageURISource;
+  activeIcon: ImageProps | View | any;
   /** Menu 被激活的时候的图标: 如果不配置，则按照 activeColor 对默认图标填充颜色 */
-  activeImage?: ImageRequireSource | ImageURISource;
+  inactiveIcon?: ImageProps | View | any;
   text: string;
   page: View | React.FC | React.Component | any;
 }
@@ -62,24 +63,7 @@ const TabNavigator: React.FC<TabNavigatorProps> = props => {
             setIndex(i);
             props.onTabPress(tab);
           }}>
-          <Image
-            source={
-              tab.activeImage === undefined
-                ? tab.image
-                : i === index
-                ? tab.activeImage
-                : tab.image
-            }
-            style={[
-              defaultStyles.image,
-              props?.imageStyle,
-              tab.activeImage === undefined
-                ? {
-                    tintColor: i === index ? active : inactive,
-                  }
-                : {},
-            ]}
-          />
+          {i === index ? props.tabs[i].activeIcon : props.tabs[i].inactiveIcon}
           <View style={{height: 4}} />
           <Text
             style={[

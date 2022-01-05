@@ -78,7 +78,7 @@ const HarmonyOS = props => {
   return (
     <View style={{flex: 1}}>
       <View style={styles.viewContainer}>
-        <Stacks />
+        <Stacks /> 
       </View>
       <View style={styles.viewBottomSpace} />
     </View>
