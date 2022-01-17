@@ -15,6 +15,7 @@ import Debugger from './src/pages/Debugger';
 import TabBar from './src/react-native-harmonyOS/src/component/TabBar';
 import Harmony from './src/pages/Harmony';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
+import Setting from './src/pages/Setting';
 
 let colors =
   x.Colors.Gradient[
@@ -36,7 +37,7 @@ const App = () => {
     {
       icon: require('./src/images/menu_vip.png'),
       text: 'Setting',
-      page: <View />,
+      page: <Setting />,
     },
   ];
   const [tab, setTab] = useState(tabs[0]);

@@ -22,6 +22,10 @@ const StaggeredListView = () => {
     Array.from({length: colums}, (_, i) => 0),
   );
 
+  const [datas, setDatas] = useState(
+    Array.from({length: 100}, (_, i) => Math.ceil(Math.random() * 200)),
+  );
+
   const findMinColumn = () => {
     let min = 0;
     for (let i = 0; i < columnsPageLengths.length; i++) {
@@ -37,6 +41,16 @@ const StaggeredListView = () => {
     return () => {};
   }, [columnsPageLengths]);
 
+  useEffect(() => {
+    // views[findMinColumn()].current.push(Math.ceil(Math.random() * 200));
+    for (let i = 0; i < datas.length; i++) {
+      views[Math.ceil(i%colums)].current.push(
+        Math.ceil(Math.random() * 10),
+      );
+    }
+    return () => {};
+  }, []);
+
   return (
     <View style={{flex: 1}}>
       <TouchableOpacity
@@ -46,7 +60,10 @@ const StaggeredListView = () => {
         }}>
         <Text>Press me</Text>
       </TouchableOpacity>
-      <ScrollView>
+      <ScrollView
+        onScroll={() => {
+          setIndex(t => t + 1);
+        }}>
         <View style={styles.viewColumns}>
           {Array.from({length: 3}, (_, i) => (
             // <FlatList
