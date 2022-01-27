@@ -9,23 +9,28 @@ import {
 } from 'react-native';
 import List from './List';
 
-const StaggeredListView = () => {
-  const colums = 3;
+interface StaggeredListViewProps {
+  columns: number;
+  datas: any[];
+  renderItem: (item: any) => React.ReactNode | View | React.FC;
+}
+
+const StaggeredListView: React.FC<StaggeredListViewProps> = props => {
   // 每一列的 ref
   type ListHandlers = React.ElementRef<typeof List>;
-  const views = Array.from({length: colums}, (_, i) =>
+  const views = Array.from({length: props.columns}, (_, i) =>
     React.useRef<ListHandlers>(),
   );
   const [index, setIndex] = useState(0);
   // 每一列的 Page 的高度
   const [columnsPageLengths, setColumnsPageLengths] = useState(
-    Array.from({length: colums}, (_, i) => 0),
+    Array.from({length: props.columns}, (_, i) => 0),
   );
 
-  const [datas, setDatas] = useState(
-    Array.from({length: 100}, (_, i) => Math.ceil(Math.random() * 200)),
-  );
-
+  /**
+   * 最小高度的下标
+   * @returns
+   */
   const findMinColumn = () => {
     let min = 0;
     for (let i = 0; i < columnsPageLengths.length; i++) {
@@ -37,35 +42,28 @@ const StaggeredListView = () => {
   };
 
   useEffect(() => {
-    console.log('columnsPageLengths', columnsPageLengths.join(' '));
+    console.log(
+      '🐞 ~ file: index.tsx ~ line 48 ~ useEffect ~ columnsPageLengths',
+      columnsPageLengths,
+    );
+    setIndex((t) => t+1)
     return () => {};
   }, [columnsPageLengths]);
 
   useEffect(() => {
-    // views[findMinColumn()].current.push(Math.ceil(Math.random() * 200));
-    for (let i = 0; i < datas.length; i++) {
-      views[Math.ceil(i%colums)].current.push(
-        Math.ceil(Math.random() * 10),
-      );
-    }
+    index < props.datas.length &&
+      views[findMinColumn()].current.push(props.datas[index]);
     return () => {};
-  }, []);
+  }, [index]);
 
   return (
     <View style={{flex: 1}}>
-      <TouchableOpacity
-        onPress={() => {
-          views[findMinColumn()].current.push(Math.ceil(Math.random() * 204));
-          setIndex(t => t + 1);
-        }}>
-        <Text>Press me</Text>
-      </TouchableOpacity>
       <ScrollView
         onScroll={() => {
           setIndex(t => t + 1);
         }}>
         <View style={styles.viewColumns}>
-          {Array.from({length: 3}, (_, i) => (
+          {Array.from({length: props.columns}, (_, i) => (
             // <FlatList
             //   key={i}
             //   data={Array.from({length: 100}, (_, i) => i)}
@@ -76,6 +74,7 @@ const StaggeredListView = () => {
             // />
             <List
               key={i}
+              renderItem={item => props.renderItem(item)}
               ref={ref => (views[i].current = ref)}
               useLayoutChanged={height => {
                 let _columnsPageLengths = Array.from(columnsPageLengths);

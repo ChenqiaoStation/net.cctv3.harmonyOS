@@ -5,6 +5,7 @@ import Item from './Item';
 
 interface ListProps {
   useLayoutChanged: (height: number) => void;
+  renderItem: (item: any) => React.ReactNode | View | React.FC;
 }
 
 type ListHandlers = {
@@ -30,7 +31,7 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
 
   useImperativeHandle(ref, () => ({
     push: item => {
-      datas.push(`${mansory}/${item}.jpg`);
+      datas.push(item);
       setDatas(datas);
     },
     // height: () => {
@@ -64,10 +65,7 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
             newItems[i] = height;
             setItemsMap(newItems);
           }}>
-          <AutoHeightImage
-            width={Dimensions.get('screen').width / 3}
-            source={{uri: _}}
-          />
+          {props.renderItem(_)}
         </Item>
       ))}
     </View>

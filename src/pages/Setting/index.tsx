@@ -42,24 +42,24 @@ interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = props => {
-  const [s, setS] = useState(0);
-  let timer = useRef<NodeJS.Timer>();
+const [s, setS] = useState(0);
+let timer = useRef<NodeJS.Timer>();
 
-  useEffect(() => {
-    timer.current = setInterval(() => {
-      setS(t => t + 1);
-    }, 1000);
-    return () => {
-      clearInterval(timer.current);
-    };
-  }, []);
+useEffect(() => {
+  timer.current = setInterval(() => {
+    setS(t => t + 1);
+  }, 1000);
+  return () => {
+    clearInterval(timer.current);
+  };
+}, []);
 
-  useEffect(() => {
-    if (s == props.time) {
-      clearInterval(timer.current);
-    }
-    return () => {};
-  }, [s]);
+useEffect(() => {
+  if (s == props.time) {
+    clearInterval(timer.current);
+  }
+  return () => {};
+}, [s]);
 
   const fillZero = (n: number) => {
     return n < 10 ? `0${n}` : `${n}`;
