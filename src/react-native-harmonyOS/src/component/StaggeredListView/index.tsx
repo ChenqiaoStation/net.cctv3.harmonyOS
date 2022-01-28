@@ -1,12 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import List from './List';
 
 interface StaggeredListViewProps {
@@ -46,11 +39,12 @@ const StaggeredListView: React.FC<StaggeredListViewProps> = props => {
       '🐞 ~ file: index.tsx ~ line 48 ~ useEffect ~ columnsPageLengths',
       columnsPageLengths,
     );
-    setIndex((t) => t+1)
+    setIndex(t => t + 1);
     return () => {};
   }, [columnsPageLengths]);
 
   useEffect(() => {
+    console.log('index: ', index);
     index < props.datas.length &&
       views[findMinColumn()].current.push(props.datas[index]);
     return () => {};
@@ -58,10 +52,7 @@ const StaggeredListView: React.FC<StaggeredListViewProps> = props => {
 
   return (
     <View style={{flex: 1}}>
-      <ScrollView
-        onScroll={() => {
-          setIndex(t => t + 1);
-        }}>
+      <ScrollView>
         <View style={styles.viewColumns}>
           {Array.from({length: props.columns}, (_, i) => (
             // <FlatList
@@ -74,6 +65,7 @@ const StaggeredListView: React.FC<StaggeredListViewProps> = props => {
             // />
             <List
               key={i}
+              id={i + 1}
               renderItem={item => props.renderItem(item)}
               ref={ref => (views[i].current = ref)}
               useLayoutChanged={height => {

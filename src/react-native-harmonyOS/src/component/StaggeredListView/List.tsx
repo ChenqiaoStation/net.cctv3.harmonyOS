@@ -1,9 +1,9 @@
-import React, {useEffect, useImperativeHandle, useRef, useState} from 'react';
-import {Dimensions, ScrollView, View} from 'react-native';
-import AutoHeightImage from 'react-native-auto-height-image';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
+import { View } from 'react-native';
 import Item from './Item';
 
 interface ListProps {
+  id: number | string;
   useLayoutChanged: (height: number) => void;
   renderItem: (item: any) => React.ReactNode | View | React.FC;
 }
@@ -31,8 +31,10 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
 
   useImperativeHandle(ref, () => ({
     push: item => {
-      datas.push(item);
-      setDatas(datas);
+      setDatas(_datas => {
+        return [..._datas, item];
+      });
+      console.log(`第${props.id}列准备更新: `, datas.length);
     },
     // height: () => {
     //   let height = 0;
@@ -61,7 +63,7 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
         <Item
           key={i}
           onMeasuredHeight={height => {
-            let newItems = Object.assign({}, itemsMap);
+            let newItems = JSON.parse(JSON.stringify(itemsMap));
             newItems[i] = height;
             setItemsMap(newItems);
           }}>
