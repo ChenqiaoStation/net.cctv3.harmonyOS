@@ -25,13 +25,8 @@ const StaggeredListView: React.FC<StaggeredListViewProps> = props => {
    * @returns
    */
   const findMinColumn = () => {
-    let min = 0;
-    for (let i = 0; i < columnsPageLengths.length; i++) {
-      if (columnsPageLengths[i] < columnsPageLengths[min]) {
-        min = i;
-      }
-    }
-    return min;
+    let min = Math.min(...columnsPageLengths);
+    return columnsPageLengths.findIndex(it => it == min);
   };
 
   useEffect(() => {
@@ -84,15 +79,12 @@ const StaggeredListView: React.FC<StaggeredListViewProps> = props => {
 
 const styles = StyleSheet.create({
   view: {
-    flexDirection: 'column',
-    display: 'flex',
-    alignItems: 'center',
     flex: 1,
+    alignItems: 'center',
   },
   viewColumns: {
     flex: 1,
     flexDirection: 'row',
-    display: 'flex',
     justifyContent: 'space-between',
   },
 });
