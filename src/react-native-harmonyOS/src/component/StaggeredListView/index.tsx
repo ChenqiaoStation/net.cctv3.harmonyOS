@@ -30,16 +30,11 @@ const StaggeredListView: React.FC<StaggeredListViewProps> = props => {
   };
 
   useEffect(() => {
-    console.log(
-      '🐞 ~ file: index.tsx ~ line 48 ~ useEffect ~ columnsPageLengths',
-      columnsPageLengths,
-    );
     setIndex(t => t + 1);
     return () => {};
   }, [columnsPageLengths]);
 
   useEffect(() => {
-    console.log('index: ', index);
     index < props.datas.length &&
       views[findMinColumn()].current.push(props.datas[index]);
     return () => {};

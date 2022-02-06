@@ -1,9 +1,18 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {
+  Alert,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {x} from '../../react-native-harmonyOS';
+import {AddressSelector} from '../../react-native-harmonyOS/src/component/react-native-address-selector';
 
 const Setting = () => {
   const [datas, setDatas] = useState([]);
+  const [isShowAddressSelector, setIsShowAddressSelector] = useState(false);
 
   useEffect(() => {
     setDatas(
@@ -21,17 +30,31 @@ const Setting = () => {
   }, []);
 
   return (
-    <FlatList
-      data={datas}
-      renderItem={info => (
-        <Item
-          index={info.item.index}
-          time={info.item.time}
-          color={info.item.color}
-        />
-      )}
-      keyExtractor={(item, index) => item.index + ':' + index}
-    />
+    <View style={{flex: 1}}>
+      <TouchableOpacity
+        onPress={() => {
+          setIsShowAddressSelector(true);
+        }}>
+        <Text>Select Address</Text>
+      </TouchableOpacity>
+      <FlatList
+        data={datas}
+        renderItem={info => (
+          <Item
+            index={info.item.index}
+            time={info.item.time}
+            color={info.item.color}
+          />
+        )}
+        keyExtractor={(item, index) => item.index + ':' + index}
+      />
+      <AddressSelector
+        onHide={() => {
+          setIsShowAddressSelector(false);
+        }}
+        show={isShowAddressSelector}
+      />
+    </View>
   );
 };
 
@@ -42,24 +65,24 @@ interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = props => {
-const [s, setS] = useState(0);
-let timer = useRef<NodeJS.Timer>();
+  const [s, setS] = useState(0);
+  let timer = useRef<NodeJS.Timer>();
 
-useEffect(() => {
-  timer.current = setInterval(() => {
-    setS(t => t + 1);
-  }, 1000);
-  return () => {
-    clearInterval(timer.current);
-  };
-}, []);
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setS(t => t + 1);
+    }, 1000);
+    return () => {
+      clearInterval(timer.current);
+    };
+  }, []);
 
-useEffect(() => {
-  if (s == props.time) {
-    clearInterval(timer.current);
-  }
-  return () => {};
-}, [s]);
+  useEffect(() => {
+    if (s == props.time) {
+      clearInterval(timer.current);
+    }
+    return () => {};
+  }, [s]);
 
   const fillZero = (n: number) => {
     return n < 10 ? `0${n}` : `${n}`;

@@ -1,5 +1,5 @@
-import React, { useEffect, useImperativeHandle, useState } from 'react';
-import { View } from 'react-native';
+import React, {useEffect, useImperativeHandle, useState} from 'react';
+import {View} from 'react-native';
 import Item from './Item';
 
 interface ListProps {
@@ -34,7 +34,6 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
       setDatas(_datas => {
         return [..._datas, item];
       });
-      console.log(`第${props.id}列准备更新: `, datas.length);
     },
     // height: () => {
     //   let height = 0;
@@ -63,6 +62,9 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
         <Item
           key={i}
           onMeasuredHeight={height => {
+            console.log(
+              `Column: ${props.id} --> Item: ${i} --> Measured Layout: ${height}`,
+            );
             let newItems = JSON.parse(JSON.stringify(itemsMap));
             newItems[i] = height;
             setItemsMap(newItems);
