@@ -10,7 +10,6 @@ interface ListProps {
 
 type ListHandlers = {
   push: (item: any) => void;
-  // height: () => number;
 };
 
 type ItemWidthHieght = {
@@ -23,8 +22,7 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
   ref,
 ) => {
   const [datas, setDatas] = useState([]);
-  const mansory =
-    'https://net-cctv3.oss-cn-qingdao.aliyuncs.com/net.cctv3.temporary/masonry';
+
   const [itemsMap, setItemsMap] = useState<ItemWidthHieght>(
     Object.create(null),
   );
@@ -56,15 +54,17 @@ const List: React.ForwardRefRenderFunction<ListHandlers, ListProps> = (
     return () => {};
   }, [itemsMap]);
 
+  // console.log('ListView -> List -> Item', datas);
   return (
     <View style={{flex: 1}}>
       {Array.from(datas, (_, i) => (
         <Item
           key={i}
           onMeasuredHeight={height => {
-            console.log(
-              `Column: ${props.id} --> Item: ${i} --> Measured Layout: ${height}`,
-            );
+            /**
+             * 以后可以优化的地方
+             * 直接用 MeasuredView 套起来，直接算每一列的高度，而不是累加 Item 高度
+             */
             let newItems = JSON.parse(JSON.stringify(itemsMap));
             newItems[i] = height;
             setItemsMap(newItems);

@@ -8,11 +8,9 @@ import {
   View,
 } from 'react-native';
 import {x} from '../../react-native-harmonyOS';
-import {AddressSelector} from '../../react-native-harmonyOS/src/component/react-native-address-selector';
 
 const Setting = () => {
   const [datas, setDatas] = useState([]);
-  const [isShowAddressSelector, setIsShowAddressSelector] = useState(false);
 
   useEffect(() => {
     setDatas(
@@ -31,10 +29,7 @@ const Setting = () => {
 
   return (
     <View style={{flex: 1}}>
-      <TouchableOpacity
-        onPress={() => {
-          setIsShowAddressSelector(true);
-        }}>
+      <TouchableOpacity onPress={() => {}}>
         <Text>Select Address</Text>
       </TouchableOpacity>
       <FlatList
@@ -47,12 +42,6 @@ const Setting = () => {
           />
         )}
         keyExtractor={(item, index) => item.index + ':' + index}
-      />
-      <AddressSelector
-        onHide={() => {
-          setIsShowAddressSelector(false);
-        }}
-        show={isShowAddressSelector}
       />
     </View>
   );
