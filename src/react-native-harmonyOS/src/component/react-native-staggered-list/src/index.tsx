@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import List from './List';
 import Item from './Item';
 
@@ -29,7 +35,7 @@ type IndexEffect = {
  */
 type MeasureResult = {
   header: number;
-  list: number[];
+  columns: number[];
   footer: number;
 };
 
@@ -46,6 +52,8 @@ interface StaggeredListProps {
   showsVerticalScrollIndicator?: boolean;
   /** Header、List、Footer 的测量结果 */
   onMeasure?: (measureResult: MeasureResult) => void;
+  /** 滑动事件 */
+  onScroll?: (e: NativeSyntheticEvent<NativeScrollEvent>) => void;
 }
 
 const StaggeredList: React.FC<StaggeredListProps> = props => {
@@ -75,19 +83,14 @@ const StaggeredList: React.FC<StaggeredListProps> = props => {
     return uniteEffects.columnsHeights.findIndex(it => it == min);
   };
 
-  /**
-   * 测量 Header、Columns & Footer 的结果
-   * @param key
-   * @param value
-   */
   const useMeasureResultChanged = (key: keyof MeasureResult, value: any) => {
     const _measureResult = JSON.parse(JSON.stringify(measureResult));
     _measureResult[key] = value;
     setMeasureResult(_measureResult);
   };
-  
+
   useEffect(() => {
-    props?.onMeasure(measureResult);
+    props.onMeasure && props?.onMeasure(measureResult);
     return () => {};
   }, [measureResult]);
 
@@ -124,6 +127,10 @@ const StaggeredList: React.FC<StaggeredListProps> = props => {
   return (
     <View style={{flex: 1}}>
       <ScrollView
+        scrollEventThrottle={100}
+        onScroll={e => {
+          props.onScroll && props?.onScroll(e);
+        }}
         showsVerticalScrollIndicator={
           props?.showsVerticalScrollIndicator ?? false
         }>
@@ -131,7 +138,7 @@ const StaggeredList: React.FC<StaggeredListProps> = props => {
           onMeasuredHeight={height => {
             useMeasureResultChanged('header', height);
           }}>
-          {props?.header ?? null}
+          {props?.header ?? <View />}
         </Item>
         <View style={styles.viewColumns}>
           {Array.from({length: props.columns}, (_, i) => (
@@ -155,7 +162,7 @@ const StaggeredList: React.FC<StaggeredListProps> = props => {
                 heights[i] = Math.ceil(height);
                 // console.log('newHeights: ', heights);
                 _uniteEffects.columnsHeights = heights;
-                useMeasureResultChanged('list', heights);
+                useMeasureResultChanged('columns', heights);
                 setUniteEffects(_uniteEffects);
               }}
             />
@@ -163,7 +170,7 @@ const StaggeredList: React.FC<StaggeredListProps> = props => {
         </View>
         <Item
           onMeasuredHeight={height => {
-            useMeasureResultChanged('header', height);
+            useMeasureResultChanged('footer', height);
           }}>
           {props?.footer ?? null}
         </Item>

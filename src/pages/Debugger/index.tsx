@@ -17,7 +17,7 @@ import {Button, ProgressBar} from '../../react-native-harmonyOS';
 import tinycolor from 'tinycolor2';
 import DeviceInfo from 'react-native-device-info';
 import JJ from './JJ';
-import TestStaggeredListView from '../Demo/TestStaggeredListView';
+import TestStaggeredListView from '../Demo/TestStaggeredList';
 
 const nativeAppCenters = [
   {regexp: /.*(mi).*/i, url: 'mimarket://details?id=com.mis'},

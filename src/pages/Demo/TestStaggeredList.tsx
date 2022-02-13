@@ -9,12 +9,13 @@ import {
   Dimensions,
   Alert,
 } from 'react-native';
-import StaggeredListView from '../../react-native-harmonyOS/src/component/StaggeredListView';
+// import StaggeredListView from '../../react-native-harmonyOS/src/component/StaggeredListView';
 import List from '../../react-native-harmonyOS/src/component/StaggeredListView/List';
 
 import souls from '../../datas/soul.json';
+import {StaggeredList} from '../../react-native-harmonyOS/index';
 
-const TestStaggeredListView = () => {
+const TestStaggeredList = () => {
   const [pageIndex, setPageIndex] = useState(0);
   const [datas, setDatas] = useState([]);
 
@@ -44,7 +45,7 @@ const TestStaggeredListView = () => {
   const size = Dimensions.get('screen').width / 3 - 4;
   return (
     <View style={{flex: 1, backgroundColor: '#f0f0f0'}}>
-      <StaggeredListView
+      <StaggeredList
         columns={3}
         header={<Text>Test my staggered list view.</Text>}
         footer={
@@ -88,6 +89,12 @@ const TestStaggeredListView = () => {
           );
         }}
         datas={datas}
+        onMeasure={result => {
+          console.log(result);
+        }}
+        onScroll={(e)=>{
+          console.log(e.nativeEvent.contentOffset.y)
+        }}
       />
     </View>
   );
@@ -108,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TestStaggeredListView;
+export default TestStaggeredList;

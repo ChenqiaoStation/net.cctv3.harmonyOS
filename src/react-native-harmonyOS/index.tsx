@@ -8,6 +8,8 @@ import CheckBox from './src/component/CheckBox';
 import RadioButton from './src/component/RadioButton';
 import SeekBar from './src/component/SeekBar';
 import ProgressBar from './src/component/ProgressBar';
+import { StaggeredList } from './src/component/react-native-staggered-list';
+
 export {
   x,
   Closure,
@@ -19,4 +21,5 @@ export {
   RadioButton,
   SeekBar,
   ProgressBar,
+  StaggeredList
 };
