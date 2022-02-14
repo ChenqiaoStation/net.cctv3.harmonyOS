@@ -20,23 +20,25 @@ const TestStaggeredList = () => {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    let _datas = JSON.parse(JSON.stringify(datas));
-    let extra = [];
-    for (let i = 0; i < 10; i++) {
-      let index = parseInt(`${souls.data.emojiList.length * Math.random()}`);
-      let item = souls.data.emojiList[index];
-      extra.push({
-        id: Math.random(),
-        page: `第${pageIndex + 1}页`,
-        title: `第 ${i + 1} 个 Item`,
-        message: item.keyWordList.join('::'),
-        image: item.emojiResourceUrl,
-      });
+    if (pageIndex < 2) {
+      let _datas = JSON.parse(JSON.stringify(pageIndex == 0 ? [] : datas));
+      let extra = [];
+      for (let i = 0; i < 10; i++) {
+        let index = parseInt(`${souls.data.emojiList.length * Math.random()}`);
+        let item = souls.data.emojiList[index];
+        extra.push({
+          id: Math.random(),
+          page: `第${pageIndex + 1}页`,
+          title: `第 ${i + 1} 个 Item`,
+          message: item.keyWordList.join('::'),
+          image: item.emojiResourceUrl,
+        });
+      }
+      setDatas(_datas.concat(extra));
     }
-    setDatas(_datas.concat(extra));
     return () => {};
   }, [pageIndex]);
-
+  
   useEffect(() => {
     console.log(new Date(), datas.length);
     return () => {};
@@ -48,6 +50,9 @@ const TestStaggeredList = () => {
       <StaggeredList
         columns={3}
         header={<Text>Test my staggered list view.</Text>}
+        onRefresh={() => {
+          setPageIndex(0);
+        }}
         footer={
           <TouchableOpacity
             onPress={() => {
@@ -57,25 +62,14 @@ const TestStaggeredList = () => {
           </TouchableOpacity>
         }
         onLoadComplete={() => {
-          Alert.alert(
-            `第${pageIndex + 1}页面完成`,
-            '请开始您的下一步骚操作。',
-            [
-              {text: '去你的', onPress: () => {}},
-              {
-                text: '下一页',
-                onPress: () => {
-                  setPageIndex(t => t + 1);
-                },
-              },
-            ],
-          );
+          setPageIndex(t => t + 1);
         }}
         renderItem={item => {
           // console.log('Using listView renderItem: ', item);
           return (
             <View style={{padding: 2}}>
               <View style={{backgroundColor: 'white', borderRadius: 4}}>
+                <Text style={{fontSize: 16, color: '#333'}}>{item?.page}</Text>
                 <Text style={{fontSize: 16, color: '#333'}}>{item?.title}</Text>
                 <Text style={{fontSize: 12, color: '#666'}}>
                   {item?.message}
@@ -90,10 +84,10 @@ const TestStaggeredList = () => {
         }}
         datas={datas}
         onMeasure={result => {
-          console.log(result);
+          // console.log(result);
         }}
-        onScroll={(e)=>{
-          console.log(e.nativeEvent.contentOffset.y)
+        onScroll={e => {
+          // console.log(e.nativeEvent.contentOffset.y);
         }}
       />
     </View>
