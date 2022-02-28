@@ -1,26 +1,12 @@
-import React from 'react';
-import {
-  AppRegistry,
-  View,
-  StyleSheet,
-  Platform,
-  StatusBar,
-  Alert,
-} from 'react-native';
-import Stacks from './Stacks';
-import {name as appName} from './app.json';
-import {x, Closure} from './src/react-native-harmonyOS';
-import {useEffect} from 'react';
-import moment from 'moment';
+import React, { useEffect } from 'react';
+import { AppRegistry, StyleSheet, View } from 'react-native';
 import codePush from 'react-native-code-push';
 import DeviceInfo from 'react-native-device-info';
+import x from 'react-native-x-utils';
+import { name as appName } from './app.json';
+import Stacks from './Stacks';
 
 const HarmonyOS = props => {
-  useEffect(() => {
-    console.log('init closure state: ', Closure.getState());
-    console.log('Week in this year: ', moment().week());
-  }, [Closure.getState()]);
-
   const statuses = [
     'UP_TO_DATE',
     'UPDATE_INSTALLED',
@@ -78,7 +64,7 @@ const HarmonyOS = props => {
   return (
     <View style={{flex: 1}}>
       <View style={styles.viewContainer}>
-        <Stacks /> 
+        <Stacks />
       </View>
       <View style={styles.viewBottomSpace} />
     </View>
@@ -87,7 +73,7 @@ const HarmonyOS = props => {
 
 const styles = StyleSheet.create({
   viewBottomSpace: {
-    height: x.iPhone11.getBottomSpace(),
+    height: x.ui.useHomeIndicatorHeight(),
     backgroundColor: 'white',
   },
   viewContainer: {

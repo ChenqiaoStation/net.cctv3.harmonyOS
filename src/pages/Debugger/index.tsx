@@ -1,22 +1,5 @@
-import moment from 'moment';
-import React, {useState} from 'react';
-import {useEffect} from 'react';
-import {useRef} from 'react';
-import {
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  FlatList,
-  Animated,
-  Dimensions,
-  Linking,
-} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import {Button, ProgressBar} from '../../react-native-harmonyOS';
-import tinycolor from 'tinycolor2';
-import DeviceInfo from 'react-native-device-info';
-import JJ from './JJ';
+import React, {useEffect, useRef, useState} from 'react';
+import {Animated, StyleSheet, View} from 'react-native';
 import TestStaggeredListView from '../Demo/TestStaggeredList';
 
 const nativeAppCenters = [

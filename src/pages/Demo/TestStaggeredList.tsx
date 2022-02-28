@@ -1,23 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  ScrollView,
+  Dimensions,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-  Image,
-  Dimensions,
-  Alert,
+  View
 } from 'react-native';
-// import StaggeredListView from '../../react-native-harmonyOS/src/component/StaggeredListView';
-import List from '../../react-native-harmonyOS/src/component/StaggeredListView/List';
-
 import souls from '../../datas/soul.json';
-import {StaggeredList} from '../../react-native-harmonyOS/index';
+import { StaggeredList } from '../../react-native-harmonyOS/index';
+
+type ItemT = {
+  id: string | number;
+  page: string;
+  title: string;
+  message: string;
+  image: string;
+};
 
 const TestStaggeredList = () => {
   const [pageIndex, setPageIndex] = useState(0);
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState<ItemT[]>([]);
 
   useEffect(() => {
     if (pageIndex < 2) {
@@ -38,13 +41,14 @@ const TestStaggeredList = () => {
     }
     return () => {};
   }, [pageIndex]);
-  
+
   useEffect(() => {
     console.log(new Date(), datas.length);
     return () => {};
   }, [datas]);
 
   const size = Dimensions.get('screen').width / 3 - 4;
+
   return (
     <View style={{flex: 1, backgroundColor: '#f0f0f0'}}>
       <StaggeredList
@@ -66,6 +70,7 @@ const TestStaggeredList = () => {
         }}
         renderItem={item => {
           // console.log('Using listView renderItem: ', item);
+          item;
           return (
             <View style={{padding: 2}}>
               <View style={{backgroundColor: 'white', borderRadius: 4}}>

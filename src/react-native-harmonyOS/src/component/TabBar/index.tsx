@@ -1,18 +1,15 @@
-import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
-
+import React from 'react';
 import {
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  TouchableOpacity,
   Image,
   ImageStyle,
+  StyleSheet,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import iPhone11 from '../../x/iPhone11';
 import LinearGradient from 'react-native-linear-gradient';
-import {TextStyle} from 'react-native';
+import x from 'react-native-x-utils';
 
 interface TabBarProps {
   /** 是否有返回的按钮 */
@@ -74,13 +71,13 @@ const TabBar: React.FC<TabBarProps> = props => {
 
 const defaultStyles = StyleSheet.create({
   viewTabBar: {
-    paddingTop: iPhone11.getStatusBarHeight(),
+    paddingTop: x.ui.useStatusBarHeight(true),
     flexDirection: 'row',
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    height: 44 + iPhone11.getStatusBarHeight(),
+    height: 44 + x.ui.useStatusBarHeight(true),
   },
   imageBack: {
     height: 24,

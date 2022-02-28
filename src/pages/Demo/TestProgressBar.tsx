@@ -1,10 +1,7 @@
-import React, {useState} from 'react';
-import {useEffect} from 'react';
-import {useRef} from 'react';
-import {StyleSheet, View, Animated, Dimensions} from 'react-native';
-import {Button, ProgressBar} from '../../react-native-harmonyOS';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Dimensions, StyleSheet, View } from 'react-native';
 import tinycolor from 'tinycolor2';
-import {x} from '../../react-native-harmonyOS';
+import { Button, ProgressBar } from '../../react-native-harmonyOS';
 
 const TestProgressBar = () => {
   // 缩放动画
@@ -36,7 +33,6 @@ const TestProgressBar = () => {
   });
 
   let color = '#d2aaa0';
-  let index = Math.floor(x.Colors.Gradient.length * Math.random());
   return (
     <View style={styles.viewContainer}>
       <ProgressBar

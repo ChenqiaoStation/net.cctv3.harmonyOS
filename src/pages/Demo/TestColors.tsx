@@ -8,12 +8,10 @@ import {
   ViewProps,
 } from 'react-native';
 
-import {x, Closure} from '../../react-native-harmonyOS';
-
 const TestColors = () => {
   return (
     <View style={styles.viewAll}>
-      <View style={styles.viewItems}>
+      {/* <View style={styles.viewItems}>
         {Array.from(x.Colors.Color, (_, i) => {
           let item = x.Colors.Color[i];
           return (
@@ -38,7 +36,7 @@ const TestColors = () => {
             </View>
           );
         })}
-      </View>
+      </View> */}
     </View>
   );
 };

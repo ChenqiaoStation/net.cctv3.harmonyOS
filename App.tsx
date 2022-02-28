@@ -9,18 +9,14 @@
 import React from 'react';
 import {StatusBar, StyleSheet, Text, View, Image} from 'react-native';
 
-import {Button, TabNavigator, x, Closure} from './src/react-native-harmonyOS';
 import {useState} from 'react';
 import Debugger from './src/pages/Debugger';
 import TabBar from './src/react-native-harmonyOS/src/component/TabBar';
 import Harmony from './src/pages/Harmony';
 import {Grayscale} from 'react-native-color-matrix-image-filters';
 import Setting from './src/pages/Setting';
-
-let colors =
-  x.Colors.Gradient[
-    parseInt((Math.random() * x.Colors.Gradient.length).toString())
-  ];
+import {TabNavigator} from './src/react-native-harmonyOS';
+import x from 'react-native-x-utils';
 
 const App = () => {
   const tabs = [
@@ -68,7 +64,7 @@ const App = () => {
         textStyle={{color: 'white'}}
         isHaveBackButton={false}
         onBackButtonPress={() => {}}
-        backgroundColors={[colors.start, colors.end]}
+        backgroundColors={[x.ui.useRandomColor()]}
       />
       <View style={styles.viewContainer}>{tab.page}</View>
       <TabNavigator

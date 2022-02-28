@@ -1,6 +1,5 @@
 import Button, {ButtonProps} from './src/component/Button';
 import TabNavigator from './src/component/TabNavigator';
-import x from './src/x';
 import Closure from './src/state/Closure';
 import TabBar from './src/component/TabBar';
 import Switcher from './src/component/Switcher';
@@ -11,7 +10,6 @@ import ProgressBar from './src/component/ProgressBar';
 import { StaggeredList } from './src/component/react-native-staggered-list';
 
 export {
-  x,
   Closure,
   Button,
   TabBar,

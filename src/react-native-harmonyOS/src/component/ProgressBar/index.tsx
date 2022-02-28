@@ -1,5 +1,5 @@
-import React, {useEffect, useRef} from 'react';
-import {StyleSheet, Text, useColorScheme, View, Animated} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, StyleSheet, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 export interface ProgressBarProps {

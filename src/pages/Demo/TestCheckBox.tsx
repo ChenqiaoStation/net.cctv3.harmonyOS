@@ -1,8 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View, FlatList, Dimensions} from 'react-native';
-
-import {Button, TabNavigator, x, Closure, TabBar, CheckBox} from '../../react-native-harmonyOS';
-import {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
+import {CheckBox} from '../../react-native-harmonyOS';
 import {CheckBoxsSkin} from '../../react-native-harmonyOS/src/component/CheckBox';
 
 const TestCheckBox = () => {

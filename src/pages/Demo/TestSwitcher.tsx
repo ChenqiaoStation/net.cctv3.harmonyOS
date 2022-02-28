@@ -1,18 +1,6 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Dimensions,
-} from 'react-native';
-
-import {Button, TabNavigator, x, Closure} from '../../react-native-harmonyOS';
-import {useState} from 'react';
-import {Switcher} from '../../react-native-harmonyOS';
+import { StyleSheet, View } from 'react-native';
+import { Switcher } from '../../react-native-harmonyOS';
 
 const TestSwitcher = () => {
   return (

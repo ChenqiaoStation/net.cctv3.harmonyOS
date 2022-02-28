@@ -1,19 +1,7 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Dimensions,
-  Image,
-} from 'react-native';
-
-import {Button, TabNavigator, x, Closure} from '../../react-native-harmonyOS';
-import {useState} from 'react';
-import {Grayscale} from 'react-native-color-matrix-image-filters';
+import { Image, StyleSheet, View } from 'react-native';
+import { Grayscale } from 'react-native-color-matrix-image-filters';
+import { TabNavigator } from '../../react-native-harmonyOS';
 
 const TestTabNavigator = () => {
   let tabs = [

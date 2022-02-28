@@ -1,15 +1,5 @@
-import moment from 'moment';
-import React, {useState} from 'react';
-import {useEffect} from 'react';
-import {useRef} from 'react';
-import {
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  FlatList,
-  Animated,
-} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, StyleSheet, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import tinycolor from 'tinycolor2';
 

@@ -1,13 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  Alert,
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {x} from '../../react-native-harmonyOS';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const Setting = () => {
   const [datas, setDatas] = useState([]);

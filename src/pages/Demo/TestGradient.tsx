@@ -1,12 +1,10 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import {x} from '../../react-native-harmonyOS';
+import { StyleSheet, View } from 'react-native';
 
 const TestGradient = () => {
   return (
     <View style={styles.view}>
-      {Array.from(x.Colors.Gradient, (_, i) => {
+      {/* {Array.from(x.Colors.Gradient, (_, i) => {
         let item = x.Colors.Gradient[i];
         return (
           <LinearGradient
@@ -17,7 +15,7 @@ const TestGradient = () => {
             <View style={styles.viewItem} />
           </LinearGradient>
         );
-      })}
+      })} */}
     </View>
   );
 };

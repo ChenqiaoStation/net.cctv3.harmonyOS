@@ -1,17 +1,6 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Dimensions,
-} from 'react-native';
-
-import {Button, TabNavigator, x, Closure, TabBar, SeekBar} from '../../react-native-harmonyOS';
-import {useState} from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import { SeekBar } from '../../react-native-harmonyOS';
 
 const loadSeekBar = (
   dotSize: number,
@@ -25,7 +14,6 @@ const loadSeekBar = (
       activeColor={activeColor}
       barWidth={Dimensions.get('screen').width - 48}
       onProgressChange={progress => {
-        Closure.set('progress', progress);
         // console.log('current', Closure.getState());
       }}
     />
